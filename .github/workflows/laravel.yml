@@ -1,3 +1,5 @@
+# Pipeline CI para validar automáticamente el proyecto Laravel
+
 name: Laravel CI
 
 on:
