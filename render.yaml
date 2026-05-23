@@ -1,0 +1,32 @@
+services:
+  - type: web
+    name: ecommerce-laravel
+    runtime: docker
+    plan: free
+    branch: main
+    autoDeploy: true
+    envVars:
+      - key: APP_NAME
+        value: E-Commerce Laravel
+      - key: APP_ENV
+        value: production
+      - key: APP_KEY
+        sync: false
+      - key: APP_DEBUG
+        value: false
+      - key: APP_URL
+        sync: false
+      - key: LOG_CHANNEL
+        value: stack
+      - key: DB_CONNECTION
+        value: sqlite
+      - key: DB_DATABASE
+        value: database/database.sqlite
+      - key: SESSION_DRIVER
+        value: file
+      - key: CACHE_STORE
+        value: file
+      - key: QUEUE_CONNECTION
+        value: sync
+      - key: MAIL_MAILER
+        value: log

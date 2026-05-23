@@ -1,0 +1,57 @@
+name: Laravel CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  tests:
+    name: Pruebas automáticas Laravel
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Clonar repositorio
+        uses: actions/checkout@v4
+
+      - name: Instalar PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          extensions: mbstring, dom, fileinfo, pdo, pdo_sqlite, sqlite3
+          coverage: none
+
+      - name: Instalar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Instalar dependencias Composer
+        run: composer install --no-interaction --prefer-dist --optimize-autoloader
+
+      - name: Instalar dependencias NPM
+        run: npm ci
+
+      - name: Compilar assets
+        run: npm run build
+
+      - name: Configurar entorno
+        run: |
+          cp .env.example .env
+          php artisan key:generate
+          mkdir -p database
+          touch database/database.sqlite
+          echo "DB_CONNECTION=sqlite" >> .env
+          echo "DB_DATABASE=${{ github.workspace }}/database/database.sqlite" >> .env
+          echo "SESSION_DRIVER=array" >> .env
+          echo "CACHE_STORE=array" >> .env
+          echo "QUEUE_CONNECTION=sync" >> .env
+          echo "MAIL_MAILER=array" >> .env
+
+      - name: Ejecutar migraciones y seeders
+        run: php artisan migrate:fresh --seed --no-interaction
+
+      - name: Ejecutar pruebas automáticas
+        run: php artisan test
