@@ -179,3 +179,11 @@ git push origin main
 - No subir claves privadas.
 - Usar variables de entorno en la plataforma cloud.
 - Verificar que GitHub Actions termine correctamente antes del despliegue final.
+
+## Pruebas automáticas
+
+El sistema incluye pruebas Feature para validar página principal, login, protección del dashboard, autenticación 2FA, permisos de usuario y registro de productos.
+
+## Ejecución local
+
+Para ejecutar el sistema localmente se debe instalar Composer, configurar el archivo .env, ejecutar las migraciones y levantar el servidor con php artisan serve.
