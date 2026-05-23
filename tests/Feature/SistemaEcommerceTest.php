@@ -1,5 +1,6 @@
 <?php
 
+
 namespace Tests\Feature;
 
 use App\Models\Categoria;
@@ -10,6 +11,8 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Tests\TestCase;
+
+// Pruebas principales del sistema e-commerce para validar autenticación, permisos y productos.
 
 class SistemaEcommerceTest extends TestCase
 {
