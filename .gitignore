@@ -45,3 +45,7 @@ Thumbs.db
 /docker-compose.override.yml
 /.env.sail
 /.env.docker
+database.sqlite
+database/database.sqlite
+*.sqlite
+*.sqlite3
