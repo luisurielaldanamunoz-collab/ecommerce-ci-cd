@@ -188,6 +188,3 @@ El sistema incluye pruebas Feature para validar página principal, login, protec
 
 Para ejecutar el sistema localmente se debe instalar Composer, configurar el archivo .env, ejecutar las migraciones y levantar el servidor con php artisan serve.
 
-git add tests/Feature/SistemaEcommerceTest.php
-git commit -m "Organización de pruebas Feature del sistema"
-git push origin main
