@@ -173,4 +173,28 @@ class SistemaEcommerceTest extends TestCase
             'nombre' => 'Mouse gamer',
         ]);
     }
+
+    public function test_lista_de_productos_requiere_autenticacion(): void
+    {
+        $response = $this->get('/productos');
+
+        $response->assertRedirect('/entrar');
+    }
+
+    public function test_administrador_puede_eliminar_producto(): void
+    {
+        $admin = Usuario::factory()->create(['rol' => 'administrador']);
+        $producto = Producto::create([
+            'nombre' => 'Producto a eliminar',
+            'descripcion' => 'Descripción de prueba.',
+            'precio' => 100,
+            'existencia' => 5,
+            'usuario_id' => $admin->id,
+        ]);
+
+        $response = $this->actingAs($admin)->delete("/productos/{$producto->id}");
+
+        $response->assertRedirect('/productos');
+        $this->assertDatabaseMissing('productos', ['id' => $producto->id]);
+    }
 }

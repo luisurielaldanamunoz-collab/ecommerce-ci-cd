@@ -30,6 +30,13 @@ jobs:
           node-version: '20'
           cache: 'npm'
 
+      - name: Cachear dependencias Composer
+        uses: actions/cache@v4
+        with:
+          path: vendor
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: ${{ runner.os }}-composer-
+
       - name: Instalar dependencias Composer
         run: composer install --no-interaction --prefer-dist --optimize-autoloader
 
