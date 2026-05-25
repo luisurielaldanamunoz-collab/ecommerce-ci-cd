@@ -18,6 +18,10 @@ class Product extends Model
         'inventory',
     ];
 
+    protected $casts = [
+        'price' => 'integer',
+    ];
+
     public function getFormattedPriceAttribute(): string
     {
         return number_format($this->price / 100, 2);
