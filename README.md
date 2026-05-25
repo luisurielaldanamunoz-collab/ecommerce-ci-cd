@@ -1,6 +1,8 @@
-# E-Commerce Laravel
-
-Sistema web de comercio electrónico desarrollado con Laravel. Permite administrar usuarios, productos, categorías y ventas mediante autenticación con verificación de dos factores.
+#<!-- Comentario: agregado para prueba de commit — solo un comentario, no se crea archivo. 2026-05-24 -->
+#
+#E-Commerce Laravel
+#
+#Sistema web de comercio electrónico desarrollado con Laravel. Permite administrar usuarios, productos, categorías y ventas mediante autenticación con verificación de dos factores.
 
 ## Tecnologías usadas
 
