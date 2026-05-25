@@ -8,6 +8,9 @@ use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\VentaController;
 use Illuminate\Support\Facades\Route;
 
+// Ruta mínima de health-check usada por monitoring/CI: devuelve 200 OK
+Route::get('/health', fn () => response('OK', 200))->name('health');
+
 Route::get('/', function () {
     return response()->view('landing');
 })->name('home');

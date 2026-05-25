@@ -6,7 +6,7 @@
 
 ## Tecnologías usadas
 
-- Laravel 12
+- Laravel 12.
 - PHP 8.2
 - Blade
 - Tailwind CSS / Vite
